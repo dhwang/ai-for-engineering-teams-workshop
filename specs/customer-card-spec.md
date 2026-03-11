@@ -12,16 +12,18 @@
 - Display customer name, company name, and health score (0–100)
 - Show customer domains (websites) for health monitoring context
 - Display domain count when a customer has multiple domains
-- Color-coded health indicator based on score:
-  - Red: 0–30 (poor health)
-  - Yellow: 31–70 (moderate health)
-  - Green: 71–100 (good health)
-- Basic responsive design for mobile and desktop
+- Clickable card to view detailed customer profile
+- Clean, card-based responsive design
 
 #### User Interface Requirements
 - Clean, card-based visual design
 - Clear typography hierarchy: name > company > health score > domains
 - Visual hover state to indicate interactivity
+- Color-coded health indicator based on score:
+  - Red: 0–30 (poor health)
+  - Yellow: 31–70 (moderate health)
+  - Green: 71–100 (good health)
+- Basic responsive design for mobile and desktop
 
 #### Data Requirements
 - Accepts a customer object via props

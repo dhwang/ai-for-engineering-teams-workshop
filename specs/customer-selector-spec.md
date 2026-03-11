@@ -58,7 +58,6 @@
 - No sensitive customer data exposed in client-side logs
 
 ### Acceptance Criteria
-- [ ] Renders a list of CustomerCard components from the provided customer data
 - [ ] Search input filters customers by name or company in real time
 - [ ] Empty state is shown when no customers match the search query
 - [ ] Selected customer card has a distinct visual highlight
@@ -69,3 +68,9 @@
 - [ ] `CustomerSelectorProps` TypeScript interface defined and exported; no `any` types
 - [ ] Passes TypeScript strict mode checks
 - [ ] No console errors or warnings in the browser
+- [ ] Renders correctly as a child of CustomerSelector with real mock data
+- [ ] Filtering does not trigger unnecessary re-renders (verified via React DevTools or profiler).
+- [ ] Search with no matching results shows the empty state
+- [ ] Search input handles special characters without errors
+- [ ] Renders correctly when the customer list is empty (zero items)
+- [ ] Filtering does not trigger unnecessary re-renders (verified via React DevTools or profiler)

@@ -1,19 +1,13 @@
 import { Customer } from '../data/mock-customers';
+import HealthIndicator from './HealthIndicator';
 
 export interface CustomerCardProps {
   customer: Customer;
   onClick?: (customer: Customer) => void;
 }
 
-function getHealthIndicator(score: number): { color: string; label: string } {
-  if (score <= 30) return { color: 'bg-red-500', label: 'Poor' };
-  if (score <= 70) return { color: 'bg-yellow-500', label: 'Moderate' };
-  return { color: 'bg-green-500', label: 'Good' };
-}
-
 export default function CustomerCard({ customer, onClick }: CustomerCardProps) {
   const { name, company, healthScore, domains } = customer;
-  const { color, label } = getHealthIndicator(healthScore);
 
   return (
     <div
@@ -23,17 +17,13 @@ export default function CustomerCard({ customer, onClick }: CustomerCardProps) {
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? (e) => e.key === 'Enter' && onClick(customer) : undefined}
     >
-      {/* Header: name, company, health indicator */}
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div className="min-w-0">
-          <h3 className="font-semibold text-gray-900 truncate">{name}</h3>
-          <p className="text-sm text-gray-500 truncate">{company}</p>
-        </div>
-        <div className="flex flex-col items-center shrink-0">
-          <div className={`w-4 h-4 rounded-full ${color}`} title={label} />
-          <span className="text-sm font-medium text-gray-700 mt-1">{healthScore}</span>
-          <span className="text-xs text-gray-400">{label}</span>
-        </div>
+      {/* Typography hierarchy: name > company > health score > domains */}
+      <h3 className="font-semibold text-gray-900 truncate">{name}</h3>
+      <p className="text-sm text-gray-500 truncate mb-2">{company}</p>
+
+      {/* Health score */}
+      <div className="mb-3">
+        <HealthIndicator score={healthScore} />
       </div>
 
       {/* Domains */}
